@@ -1,0 +1,73 @@
+// The cafeterial Pos 
+#include <iomanip>
+#include <iostream>
+
+
+void cafeterialCalculator () { 
+ 
+  int numberOfItems; 
+  double itemPrice; 
+
+  // To get valid input from the user untill they enter the requirement, which is the number of items 
+  while (true) { 
+    std :: cout << "Enter the number of items you bought: "; 
+    std :: cin >> numberOfItems; 
+
+    if (!(numberOfItems) || numberOfItems <  0 || std :: cin.fail()) { 
+        std :: cout << std :: endl <<  "Invalid input.\nPlease enter an integer.\nEnter the number of items you bought ";
+        std :: cin.clear();
+        std :: cin.ignore(3 ,'\n');
+        continue;
+    }
+    else { 
+        break;
+    }
+  }    
+
+  double subtotal = 0; 
+  int increment = 1; 
+  // To get valid input for the price of each item. 
+  while (increment <= numberOfItems) { 
+    std :: cout << "Enter the price of each item: "; 
+    std :: cin >> itemPrice; 
+
+    if (std :: cin.fail () || itemPrice < 0) { 
+        std :: cin.clear(); 
+        std :: cin.ignore(100, '\n'); 
+        continue;
+    }
+    else { 
+        std :: cout << "Item " << increment
+    << " price : " << itemPrice << std :: endl; 
+        subtotal += itemPrice; 
+        std :: setprecision(2); 
+    }
+    
+    increment
+ ++; 
+}
+   std :: cout << "Subtotal: " <<  subtotal << std :: endl;
+   double discountPercentages = 0.1; 
+   double storeCalculateDiscount; 
+
+   if (subtotal > 100) { 
+
+      
+      storeCalculateDiscount = discountPercentages * subtotal; 
+      subtotal -= storeCalculateDiscount; 
+      std :: fixed;
+      std :: setprecision(2);
+      std :: cout << "Discount given: " << discountPercentages << std :: endl; 
+   }
+
+   std :: cout << "Total: " << subtotal;
+}
+
+
+// main function 
+
+int main () { 
+   cafeterialCalculator();
+   return 0; 
+}
+
